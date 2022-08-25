@@ -29,7 +29,7 @@ namespace Seminar3
             int dayWeek = int.Parse(Console.ReadLine());
 
             DayOffWeek(dayWeek);
-            
+
             //
 
 
@@ -72,11 +72,10 @@ namespace Seminar3
 
         //Задача 13: Напишите программу, которая выводит третью цифру заданного числа или сообщает, что третьей цифры нет.
         //То что дала GeekBrains
-        static void ViewaThirdNumber2(int num, int index)
+        static void ViewaThirdNumber2(int num, int index = 3)
         {
             Console.Clear();
-            Console.Write("Введите число: ");
-            int num = int.Parse(Console.ReadLine());
+           
             if (num < 100)
             {
                 Console.WriteLine($"Третьей цифры нет");
@@ -89,7 +88,7 @@ namespace Seminar3
         //Задача 15: Дано число обозначающее день недели. Выяснить является номер дня недели выходным
         static void DayOffWeek(int dayWeek)
         {
-            switch (dayOfTheWeekNum)
+            switch (dayWeek)
             {
                 case 1:
                     Console.WriteLine("Понедельник- НЕТ");
