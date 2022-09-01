@@ -6,29 +6,32 @@ namespace Seminar2
     {
         static void Main(string[] args)
         {
+            System.Console.Write("Введите число: ");
+            int num = int.Parse(Console.ReadLine());
+            string str = num.ToString();
             //Задача 10: Напишите программу, которая принимает на вход трёхзначное число и на выходе показывает вторую цифру этого числа.
 
-            int num = new Random().Next(1, 100000);
+            // int num = new Random().Next(1, 100000);
             // ViewSecondNumber(num);
 
             /*конец*/
 
             //Задача 13: Напишите программу, которая выводит третью цифру заданного числа или сообщает, что третьей цифры нет.
-            System.Console.Write("Введите число: ");
-            num = int.Parse(Console.ReadLine());
+            // System.Console.Write("Введите число: ");
+            // num = int.Parse(Console.ReadLine());
 
-            System.Console.Write("Введите индекс: ");
-            int numIndex = int.Parse(Console.ReadLine());
+            // System.Console.Write("Введите индекс: ");
+            // int numIndex = int.Parse(Console.ReadLine());
 
-            ViewaThirdNumber1(num, numIndex);
+            // ViewaThirdNumber1(num, numIndex);
             /*конец*/
 
             //Задача 15: Дано число обозначающее день недели. Выяснить является номер дня недели выходным
 
-            // System.Console.Write("Введите день недели: ");
-            // int dayWeek = int.Parse(Console.ReadLine());
+            System.Console.Write("Введите день недели: ");
+            int dayWeek = int.Parse(Console.ReadLine());
 
-            // DayOffWeek(dayWeek);
+            DayOffWeek(dayWeek);
 
             /*конец*/
 
@@ -66,13 +69,13 @@ namespace Seminar2
             {
                 //количество цифр в числе
                 int length = (int)Math.Log10(num);
-//456789
+                //456789
                 //Дилитель числа на какое число мы должны поделить ,для того, чтобы получить число  
                 int numberPow = (int)Math.Pow(10, length - index);
-//10^6-3=1000
+                //10^6-3=1000
                 //мы получаем нашу цифру
                 int result = num / numberPow % 10;
-//456789/1000= 456 %10=6
+                //456789/1000= 456 %10=6
                 Console.WriteLine($"{index} цифра в числе {num} -> {result}");
             }
             else

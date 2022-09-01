@@ -5,25 +5,127 @@ namespace Seminar3
     class Program
     {
         static void Main(string[] args)
-        {
+        {   // Задача 19 Напишите программу, которая принимает на вход пятизначное число и проверяет, является ли оно палиндромом.
+            // 14212 -> нет
+            // 12821 -> да
+            // 23432 -> да
+            int numPalindrome = SetNumber("Palindrome");
 
+            bool isPalindrome = IsPalindromeInt(numPalindrome);
+
+            // bool isPalindrome = IsPalindromeString(numPalindrome.ToString());
+
+            string str = isPalindrome ? "является палиндромом" : "не является палиндромом";
+
+            System.Console.WriteLine($"число {numPalindrome} {str}");
+            /*конец*/
+
+            // Задача 21
+            // Напишите программу, которая принимает на вход координаты двух точек и находит расстояние между ними в 3D пространстве.
+            // A (3,6,8); B (2,1,-7), -> 15.84
+            // A (7,-5, 0); B (1,-1,9) -> 11.53
+            int x1 = SetNumber("x1");
+            int y1 = SetNumber("y2");
+            int z1 = SetNumber("z3");
+            int x2 = SetNumber("x2");
+            int y2 = SetNumber("y2");
+            int z2 = SetNumber("z2");
+
+            double result = DistanceBetween3DPoints(x1, x2, y1, y2, z1, z2);
+            System.Console.WriteLine($"result {result}");
+            /*конец*/
+
+            // Задача 23  Напишите программу, которая принимает на вход число (N) и выдаёт таблицу кубов чисел от 1 до N.
+            //3-> 1, 8, 27
+            // 5-> 1, 8, 27, 64, 125
+            int num = SetNumber("N");
+
+            int[] arr = CubeTable(num);
+
+            System.Console.WriteLine(String.Join(",", arr));
+            /*конец*/
+
+
+
+            //DistanceBetweenPoints(x1, x2, y1, y2);
             //ViewQuarterNumber();
 
             //Задача 21: Напишите программу, которая принимает на вход координаты двух точек и находит расстояние между ними в 2D пространстве.
 
-                Console.Write("Введите X1: ");
-                int x1 = int.Parse(Console.ReadLine());
-                Console.Write("Введите Y1: ");
-                int y1 = int.Parse(Console.ReadLine());
-               Console.Write("Введите X2: ");
-                int x2 = int.Parse(Console.ReadLine());
-                Console.Write("Введите Y2: ");
-                int y2 = int.Parse(Console.ReadLine());
+            //     Console.Write("Введите X1: ");
+            //     int x1 = int.Parse(Console.ReadLine());
+            //     Console.Write("Введите Y1: ");
+            //     int y1 = int.Parse(Console.ReadLine());
+            //    Console.Write("Введите X2: ");
+            //     int x2 = int.Parse(Console.ReadLine());
+            //     Console.Write("Введите Y2: ");
+            //     int y2 = int.Parse(Console.ReadLine());
 
-                DistanceBetweenPoints(x1, x2, y1, y2);
+            //     DistanceBetweenPoints(x1, x2, y1, y2);
             //
 
         }
+
+        // Задача 19 Напишите программу, которая принимает на вход пятизначное число и проверяет, является ли оно палиндромом.
+        public static bool IsPalindromeInt(int num)
+        {
+            int temp = num;
+            int revert = 0;
+            while (temp > 0)
+            {
+                revert = (revert * 10) + (temp % 10);
+                temp /= 10;
+            }
+
+            return revert == num;
+        }
+
+        public static bool IsPalindromeString(string str)
+        {
+            int size = str.Length;
+            for (int i = 0; i <= size / 2; ++i)
+            {
+                if (str[i] != str[size - 1 - i])
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        // конец
+        //Задача 21 . Напишите программу, которая принимает на вход координаты двух точек и находит расстояние между ними в 3D пространстве.
+
+        static int SetNumber(string numberName)
+        {
+            Console.Write($"Enter number {numberName}: ");
+            int num = Convert.ToInt32(Console.ReadLine());
+            return num;
+        }
+
+        static double DistanceBetween3DPoints(int x1, int x2, int y1, int y2, int z1, int z2)
+        {
+            return Math.Sqrt(Math.Pow((x2 - x1), 2) + Math.Pow((y2 - y1), 2) + Math.Pow((z2 - z1), 2));
+        }
+        // конец
+
+        // Задача 23  Напишите программу, которая принимает на вход число (N) и выдаёт таблицу кубов чисел от 1 до N.
+
+        static int[] CubeTable(int n)
+        {
+            int[] arr = new int[n];
+
+            for (int i = 1; i <= n; i++)
+            {
+                arr[i - 1] = i * i * i;
+            }
+
+            return arr;
+        }
+
+        // конец
+
+
+
 
         //Задача 21: Напишите программу, которая принимает на вход координаты двух точек и находит расстояние между ними в 2D пространстве.
         static void DistanceBetweenPoints(int x1, int x2, int y1, int y2)
