@@ -25,8 +25,8 @@ namespace Seminar3
             // A (3,6,8); B (2,1,-7), -> 15.84
             // A (7,-5, 0); B (1,-1,9) -> 11.53
             int x1 = SetNumber("x1");
-            int y1 = SetNumber("y2");
-            int z1 = SetNumber("z3");
+            int y1 = SetNumber("y1");
+            int z1 = SetNumber("z1");
             int x2 = SetNumber("x2");
             int y2 = SetNumber("y2");
             int z2 = SetNumber("z2");
@@ -43,6 +43,7 @@ namespace Seminar3
             int[] arr = CubeTable(num);
 
             System.Console.WriteLine(String.Join(",", arr));
+          
             /*конец*/
 
 
@@ -69,11 +70,24 @@ namespace Seminar3
         // Задача 19 Напишите программу, которая принимает на вход пятизначное число и проверяет, является ли оно палиндромом.
         public static bool IsPalindromeInt(int num)
         {
+            // num = 456654
             int temp = num;
+            // temp = 456654
             int revert = 0;
+
             while (temp > 0)
             {
-                revert = (revert * 10) + (temp % 10);
+                //revert= 0*10=0 + 4=4
+                 //revert= 4*10=40 + 5=45
+                 //revert= 45*10=450 + 6=456
+                 //revert= 456*10=4560 + 6=4566
+                 //revert= 4566*10=45660 +5=45665
+                 //revert= 45665*10=456650 + 6=456654
+                revert = (revert * 10) + (temp % 10); 
+                //temp = 45665
+                //temp = 456
+                //temp = 45
+                //temp = 4
                 temp /= 10;
             }
 
