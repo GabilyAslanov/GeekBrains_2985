@@ -1,19 +1,55 @@
-﻿
+﻿// Задача №41
+
+Console.Write("Enter the elements separated by a space: ");
+int[] arr = Array.ConvertAll(Console.ReadLine().Split(), int.Parse);
+int count = 0;
+ 
+for (int i = 0; i < arr.Length; i++)
+{
+    if (arr[i] > 0)
+    {
+        count++;
+    }
+}
+ 
+Console.WriteLine($"The number of elements is greater than zero: {count}");
+
+// Задача №43
+
+Console.WriteLine("Enter a value B1");
+double b1 = Convert.ToInt32(Console.ReadLine());
+
+Console.WriteLine("Enter a value K1");
+double k1 = Convert.ToInt32(Console.ReadLine());
+
+Console.WriteLine("Enter a value B2");
+double b2 = Convert.ToInt32(Console.ReadLine());
+
+Console.WriteLine("Enter a value K2");
+double k2 = Convert.ToInt32(Console.ReadLine());
+
+double x = (-b2 + b1)/(-k1 + k2);
+double y = k2 * x + b2;
+
+Console.WriteLine($"The point of intersection of two straight lines X: {x}; Y: {y}");
+
+
+
 //Напишите программу, которая принимает на вход три числа и проверяет, 
 //может ли существовать треугольник с сторонами такой длины.
 
-Clear();
-Write("Введите стороны треугольника через пробел: ");
+Console.Clear();
+Console.Write("Введите стороны треугольника через пробел: ");
 
-string[] st=ReadLine().Split(' ',StringSplitOptions.RemoveEmptyEntries);
+string[] st=Console.ReadLine().Split(' ',StringSplitOptions.RemoveEmptyEntries);
 
 if(IsTriangle(int.Parse(st[0]),int.Parse(st[1]),int.Parse(st[2])))
 {
-    WriteLine("Да");
+    Console.WriteLine("Да");
 }
 else
 {
-    WriteLine("Нет");
+    Console.WriteLine("Нет");
 }
 
 
@@ -28,14 +64,14 @@ bool IsTriangle(int a,int b,int c)
 //Напишите программу, 
 //которая будет преобразовывать десятичное число в двоичное.
 
-Clear();
-int number=int.Parse(ReadLine());
+Console.Clear();
+int number=int.Parse(Console.ReadLine());
 
 string res1=Convert.ToString(number,2);
 string res2=DecToNum(number,2);
 
-WriteLine($"{number}->{res1}");
-WriteLine($"{number}->{res2}");
+Console.WriteLine($"{number}->{res1}");
+Console.WriteLine($"{number}->{res2}");
 
 
 //Универсальный математический для перевода из 10 в любую
@@ -68,13 +104,13 @@ return arr;
 }
 // Задача 45: Напишите программу, которая будет создавать копию заданного массива с помощью поэлементного копирования.
 
-Clear();
+Console.Clear();
 
 int[] array = GetArray(10, 0, 10);
-WriteLine(String.Join(" ", array));
+Console.WriteLine(String.Join(" ", array));
 
 int[] copyArray=CopyArray(array);
-WriteLine(String.Join(" ", copyArray));
+Console.WriteLine(String.Join(" ", copyArray));
 
 
 int[] GetArray(int size, int minValue, int maxValue)
@@ -176,7 +212,7 @@ Console.ReadLine();
 //(последний элемент будет на первом месте, а первый - на последнем и т.д.)
 Console.Clear();
 
-int[] array = GetArray(10, 0, 10);
+ array = GetArray(10, 0, 10);
 
 
 System.Console.WriteLine();
@@ -196,17 +232,6 @@ System.Console.WriteLine();
 Console.WriteLine("Array " + String.Join(" ", array));
 ReversArray3(array);
 Console.WriteLine("ReversArray3 : " + String.Join(" ", array));
-
-int[] GetArray(int size, int minValue, int maxValue)
-{
-    int[] res = new int[size];
-
-    for (int i = 0; i < size; i++)
-    {
-        res[i] = new Random().Next(minValue, maxValue + 1);
-    }
-    return res;
-}
 
 void ReversArray1(int[] inArray)
 {

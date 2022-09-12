@@ -19,7 +19,7 @@ void Start()
         {
             case 0: return; break;
             case 25: MyPow(); break;
-            case 27: SumNumber(); break;
+            case 27: SumNumbers(); break;
             case 29: ViewArray(); break;
             default: System.Console.WriteLine("error"); break;
         }
@@ -60,7 +60,7 @@ int Pow(int num, int rank)
 
 //Напишите программу, которая принимает 
 //на вход число N и выдаёт сумму цифр в числе.
-void SumNumber()
+void SumNumbers()
 {
     Console.Clear();
 

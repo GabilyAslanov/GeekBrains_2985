@@ -1,20 +1,64 @@
-﻿// Задача 31: Задайте массив из 12 элементов, заполненный случайными числами из промежутка [-9, 9].
-// Найдите сумму отрицательных и положительных элементов массива.
-//Например, в массиве [3,9,-8,1,0,-7,2,-1,8,-3,-1,6] сумма положительных чисел равна 29, сумма отрицательных равна -20.
+﻿//HW
+Start();
 
-int[] array = GetArray(12, -9, 9);
-Console.WriteLine(String.Join(" ", array));
-
-int positiveSum = 0;
-int negativeSum = 0;
-
-foreach (int el in array)
+void Start()
 {
-    positiveSum += el > 0 ? el : 0;
-    negativeSum += el < 0 ? el : 0;
+    while (true)
+    {
+        Console.ReadLine();
+        Console.Clear();
+
+        System.Console.WriteLine("34) Задача 34: Задайте массив заполненный случайными положительными трёхзначными числами. Напишите программу, которая покажет количество чётных чисел в массиве.");
+        System.Console.WriteLine("36) Задача 36: Задайте одномерный массив, заполненный случайными числами. Найдите сумму элементов, стоящих на нечётных позициях.");
+        System.Console.WriteLine("37) Задача 37: Найдите произведение пар чисел в одномерном массиве. Парой считаем первый и последний элемент, второй и предпоследний и т.д. Результат запишите в новом массиве.");
+        System.Console.WriteLine("38) Задача 38: Задайте массив вещественных чисел. Найдите разницу между максимальным и минимальным элементов массива.");
+        System.Console.WriteLine("0) End");
+
+        int numTask = SetNumber("task");
+
+        switch (numTask)
+        {
+            case 0: return; break;
+            case 34:
+                Console.Clear();
+                int[] startArray = GetArray(12, 100, 999);
+                Console.WriteLine(String.Join(" ", startArray));
+                Console.WriteLine($"Количество четных элементов в массиве = {GetEvenCount(startArray)}");
+                break;
+            case 36:
+                Console.Clear();
+                startArray = GetArray(6, 0, 999);
+                Console.WriteLine(String.Join(" ", startArray));
+                Console.WriteLine($"Сумма элементов на нечетных позициях = {GetSumOdd(startArray)}");
+
+                break;
+
+            case 37:
+
+                Console.Write("Введите элементы массива через пробел: ");
+                string elements = Console.ReadLine();
+                int[] baseArray = GetArrayFromString(elements);
+                Console.WriteLine(String.Join(" ", ResultArray(baseArray)));
+
+                break;
+
+            case 38:
+                Console.Clear();
+               double[] startArrayDouble = GetArrayDouble(6, 0, 999);
+                Console.WriteLine(String.Join(" ", startArrayDouble));
+                Console.WriteLine($"Разница = {GetDifference(startArrayDouble)}");
+                break;
+            default: System.Console.WriteLine("error"); break;
+        }
+    }
 }
 
-Console.WriteLine($"Positive sum = {positiveSum}, negative sum = {negativeSum} ");
+int SetNumber(string numberName)
+{
+    Console.Write($"Enter number {numberName}: ");
+    int num = Convert.ToInt32(Console.ReadLine());
+    return num;
+}
 
 int[] GetArray(int size, int minValue, int maxValue)
 {
@@ -27,19 +71,102 @@ int[] GetArray(int size, int minValue, int maxValue)
     return res;
 }
 
+double[] GetArrayDouble(int size, int minValue, int maxValue)
+{
+    double[] res = new double[size];
+
+    var randon = new Random();
+
+    for (int i = 0; i < size; i++)
+    {
+        res[i] = randon.Next(minValue, maxValue + 1) + randon.NextDouble();
+    }
+    return res;
+}
+
+//Задайте массив заполненный случайными положительными трёхзначными числами. Напишите программу,
+// которая покажет количество чётных чисел в массиве.
+int GetEvenCount(int[] array)
+{
+    int count = 0;
+    //[4,5,6,14]
+    foreach (var item in array)
+    {
+        if (item % 2 == 0) count++;
+    }
+    return count;
+}
+
+
+//Задайте одномерный массив, заполненный случайными числами. 
+//Найдите сумму элементов, стоящих на нечётных позициях.
+int GetSumOdd(int[] array)
+{
+    int sum = 0;
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (i % 2 == 1) sum += array[i];
+    }
+    return sum;
+}
+
+//Задайте массив вещественных чисел. 
+//Найдите разницу между максимальным и минимальным элементов массива.
+double GetDifference(double[] array)
+{
+    double min = array[0];
+    double max = array[0];
+    foreach (var item in array)
+    {
+        if (min > item) min = item;
+        if (max < item) max = item;
+    }
+    return max - min;
+}
+
+// Задача 31: Задайте массив из 12 элементов, заполненный случайными числами из промежутка [-9, 9].
+// Найдите сумму отрицательных и положительных элементов массива.
+//Например, в массиве [3,9,-8,1,0,-7,2,-1,8,-3,-1,6] сумма положительных чисел равна 29, сумма отрицательных равна -20.
+
+// int[] array = GetArray(12, -9, 9);
+// Console.WriteLine(String.Join(" ", array));
+
+// int positiveSum = 0;
+// int negativeSum = 0;
+
+// foreach (int el in array)
+// {
+//     positiveSum += el > 0 ? el : 0;
+//     negativeSum += el < 0 ? el : 0;
+// }
+
+// Console.WriteLine($"Positive sum = {positiveSum}, negative sum = {negativeSum} ");
+
+// int[] GetArray(int size, int minValue, int maxValue)
+// {
+//     int[] res = new int[size];
+
+//     for (int i = 0; i < size; i++)
+//     {
+//         res[i] = new Random().Next(minValue, maxValue + 1);
+//     }
+//     return res;
+// }
+
 /*Конец*/
 
 //Задача 32: Напишите программу замена элементов массива: положительные элементы замените на соответствующие отрицательные, и наоборот.
 //[-4, -8, 8, 2] -> [4, 8, -8, -2] 
 
 
-int[] startArray = GetArray(6, -10, 10);
-Console.WriteLine(String.Join(" ", startArray));
-Console.WriteLine(String.Join(" ", InversArray(startArray)));
+// int[] startArray = GetArray(6, -10, 10);
+// Console.WriteLine(String.Join(" ", startArray));
+// Console.WriteLine(String.Join(" ", InversArray(startArray)));
 
 // int[] GetArray(int size, int minValue, int maxValue)
 // {
 //     int[] res = new int[size];
+
 
 //     for (int i = 0; i < size; i++)
 //     {
@@ -62,27 +189,28 @@ int[] InversArray(int[] array)
 //Задача 33: Задайте массив. Напишите программу, которая определяет, присутствует ли заданное число в массиве.
 // 4; массив [6, 7, 19, 345, 3] -> нет
 // -3; массив [6, 7, 19, 345, 3] -> да
-Console.Write("Введите элементы массива через пробел: ");
-string elements = Console.ReadLine();
+// Console.Write("Введите элементы массива через пробел: ");
+// string elements = Console.ReadLine();
 
-int[] baseArray = GetArrayFromString(elements);
+//  int[] baseArray = GetArrayFromString(elements);
 
-Console.Write("Введите число: ");
-int n = int.Parse(Console.ReadLine());
+// Console.Write("Введите число: ");
+// int n = int.Parse(Console.ReadLine());
 
-if (FindElement(baseArray, n))
-{
-    Console.WriteLine("Да");
-}
-else
-{
-    Console.WriteLine("Нет");
-}
+// if (FindElement(baseArray, n))
+// {
+//     Console.WriteLine("Да");
+// }
+// else
+// {
+//     Console.WriteLine("Нет");
+// }
 
 
 int[] GetArrayFromString(string stringArray)
 {
     string[] nums = stringArray.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+
     int[] res = new int[nums.Length];
 
     for (int i = 0; i < nums.Length; i++)
@@ -109,8 +237,8 @@ bool FindElement(int[] array, int el)
 // [1, 2, 3, 6, 2] -> 0
 // [10, 11, 12, 13, 14] -> 5
 
-startArray = GetArray(123, 0, 1000);
-Console.WriteLine($"Количество элементов в отрезке [10;99] = {GetCountElements(startArray, 10, 99)}");
+// startArray = GetArray(123, 0, 1000);
+// Console.WriteLine($"Количество элементов в отрезке [10;99] = {GetCountElements(startArray, 10, 99)}");
 
 // int[] GetArray(int size, int minValue, int maxValue)
 // {
@@ -139,11 +267,7 @@ int GetCountElements(int[] array, int leftRange, int rigthRange)
 // [1 2 3 4 5] -> 5 8 3
 // [6 7 3 6] -> 36 21
 
-Console.Write("Введите элементы массива через пробел: ");
-elements = Console.ReadLine();
-baseArray = GetArrayFromString(elements);
 
-Console.WriteLine(String.Join(" ", ResultArray(baseArray)));
 
 // int[] GetArrayFromString(string stringArray)
 // {
@@ -160,14 +284,19 @@ Console.WriteLine(String.Join(" ", ResultArray(baseArray)));
 int[] ResultArray(int[] array)
 {
     int size = array.Length / 2;
+
     if (array.Length % 2 == 1) size++;
+
     int[] result = new int[size];
+
     for (int i = 0; i < array.Length / 2; i++)
     {
-        
+
         result[i] = array[i] * array[array.Length - 1 - i];
     }
-    if (array.Length % 2 == 1) result[size-1] = array[array.Length / 2];
+
+    if (array.Length % 2 == 1) result[size - 1] = array[array.Length / 2];
+
     return result;
 }
 
