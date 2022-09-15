@@ -1,7 +1,11 @@
 ﻿// Задача №41
 
 Console.Write("Enter the elements separated by a space: ");
-int[] arr = Array.ConvertAll(Console.ReadLine().Split(), int.Parse);
+string str = Console.ReadLine();
+
+var arrStr = str.Split(" ");
+
+int[] arr = Array.ConvertAll(arrStr, int.Parse);
 int count = 0;
  
 for (int i = 0; i < arr.Length; i++)
@@ -28,11 +32,11 @@ double b2 = Convert.ToInt32(Console.ReadLine());
 Console.WriteLine("Enter a value K2");
 double k2 = Convert.ToInt32(Console.ReadLine());
 
-double x = (-b2 + b1)/(-k1 + k2);
+double x = (b1-b2)/(k2-k1);
 double y = k2 * x + b2;
-
+//b1 = 2, k1 = 5, b2 = 4, k2 = 9 -> (-0,5; -0,5
 Console.WriteLine($"The point of intersection of two straight lines X: {x}; Y: {y}");
-
+Console.ReadLine();
 
 
 //Напишите программу, которая принимает на вход три числа и проверяет, 
